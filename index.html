@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Laporan Penjualan</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f0f8ff;
+        }
+        .chart-container {
+            width: 100%;
+            height: 400px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Laporan Penjualan</h1>
+        
+        <table>
+            <tr>
+                <th></th>
+                <th>Januari</th>
+                <th>Februari</th>
+                <th>Maret</th>
+                <th>April</th>
+                <th>Mei</th>
+                <th>Juni</th>
+                <th>Juli</th>
+                <th>Agustus</th>
+                <th>September</th>
+                <th>Oktober</th>
+                <th>November</th>
+                <th>Desember</th>
+            </tr>
+            <tr>
+                <td><strong>2023</strong></td>
+                <td>2,000</td>
+                <td>6,000</td>
+                <td>7,000</td>
+                <td>5,500</td>
+                <td>5,100</td>
+                <td>4,500</td>
+                <td>3,500</td>
+                <td>3,900</td>
+                <td>6,000</td>
+                <td>3,250</td>
+                <td>9,200</td>
+                <td>5,945</td>
+            </tr>
+            <tr>
+                <td><strong>2024</strong></td>
+                <td>2,400</td>
+                <td>4,100</td>
+                <td>7,900</td>
+                <td>8,000</td>
+                <td>9,500</td>
+                <td>5,000</td>
+                <td>6,100</td>
+                <td>6,340</td>
+                <td>9,400</td>
+                <td>9,200</td>
+                <td>9,280</td>
+                <td>8,680</td>
+            </tr>
+        </table>
+
+        <div class="chart-container">
+            <canvas id="salesChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('salesChart').getContext('2d');
+        
+        const data = {
+            labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+            datasets: [
+                {
+                    label: '2023',
+                    data: [2000, 6000, 7000, 5500, 5100, 4500, 3500, 3900, 6000, 3250, 9200, 5945],
+                    backgroundColor: 'rgba(11, 156, 49, 0.6)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: '2024',
+                    data: [2400, 4100, 7900, 8000, 950, 5000, 6100, 6340, 9400, 9200, 9280, 8680],
+                    backgroundColor: 'rgba(2, 9, 132, 0.8)',
+                    borderColor: 'rgba(25, 99, 132, 1)',
+                    borderWidth: 1
+                }
+            ]
+        };
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 10000
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Laporan Penjualan',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        position: 'top'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
